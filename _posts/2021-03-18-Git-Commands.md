@@ -268,7 +268,7 @@ Push an existing repository
 	# reset current HEAD to specified commit，keep staging and workspace unchanged
 	$ git reset --keep [commit]
 	
-	# roll back specified commit
+	# roll back specified commit and cover the last one with it
 	$ git revert [commit]
 	
 	# remove the changes haven't been committed temporary, pop it later
