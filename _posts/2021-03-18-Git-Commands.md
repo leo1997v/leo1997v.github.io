@@ -4,7 +4,7 @@ title:      Git Commands
 subtitle:   Some basic Git commands
 date:       2021-03-18
 author:     Leo
-header-img: img/post-bg-code.jpg
+header-img: img/post-bg-os-metro.jpg
 catalog: true
 tags:
     - Git
