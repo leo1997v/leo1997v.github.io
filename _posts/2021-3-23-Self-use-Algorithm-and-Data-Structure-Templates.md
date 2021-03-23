@@ -138,7 +138,7 @@ func(h *IntHeap) Pop()interface{}{
     return x
 
 }
-//return the kth biggest element
+//return the k th biggest element
 func findKthLargest(nums []int, k int) int {
     h:=IntHeap{}
     for _,v:=range nums{
@@ -150,3 +150,4 @@ func findKthLargest(nums []int, k int) int {
     }
     return res
 }
+```
