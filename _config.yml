@@ -71,7 +71,13 @@ gitalk:
 
 
 # 统计
+#Analytics settings
+#Baidu Analytics
+ba_track_id: 3626fe6c47163ce737150ae91c1a8e5d
 
+# Google Analytics
+#ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
+#ga_domain: auto
 
 
 
