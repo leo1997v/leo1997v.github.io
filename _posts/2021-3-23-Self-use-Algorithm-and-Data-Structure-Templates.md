@@ -1,7 +1,7 @@
 ---
 layout:     post   				    # 使用的布局（不需要改）
 title:      Self-use Algorithm and Data Structure Templates			# 标题 
-subtitle:   Some self-use data structure and algorithm templates(keep updating) #副标题
+subtitle:   Some self-used data structure and algorithm templates(keep updating) #副标题
 date:       2021-03-23 				# 时间
 author:     Leo 						# 作者
 header-img: img/post-bg-bloodborne.jpg 	#这篇文章标题背景图片
@@ -111,6 +111,10 @@ func findKthLargest(nums []int, k int) int {
     return res
 }
 ```
+
+## Graph
+
+in-Degree=out-Degree
 
 # **Algorithm**
 
@@ -259,7 +263,8 @@ X & ~X = 0
 
 ```go
 res:=[]T
-var dfs=func backtrack(路径, 选择列表){
+var dfs func (路径, 选择列表)
+dfs=func (路径, 选择列表){
     if 满足结束条件{
         result.add(路径)
         return
@@ -273,5 +278,212 @@ var dfs=func backtrack(路径, 选择列表){
     }
 }
 ```
+
+## BFS
+
+树的层序遍历，无权重图的最短路金
+
+```go
+queue:=[]*T{begin}
+step:=0
+var bfs=func(begin){
+    for len(queue)>0{
+        
+        size:=len(queue)//当前层的元素数量
+        
+        for i:=0;i<size;i++{
+            temp:=queue[0]//取出队首元素
+            
+            ...//对队首元素进行操作（取值或判断终点等）
+            
+            ...
+            queue=append(queue,...)
+            ...                         //下一层元素入队，并更新状态值
+        }
+
+        queue[size:]//弹出当前层
+
+        step++//记录步数
+    }
+    
+}
+```
+
+## Sort
+
+### quickSort
+
+average  O(nlogn)  , worst O(n<sup>2</sup>) ,unstable
+
+```go
+func sortArray(nums []int) []int {
+    quickSort(nums,0,len(nums)-1)
+    return nums
+}
+//快慢指针，i指向小于等于pivot的最后一个元素，j指向大于pivot的元素的下一个元素
+func partition(nums []int,l int,r int)int{
+    pivot:=nums[r]
+    i:=l-1
+    for j:=l;j<r;j++{
+        if nums[j]<=pivot{
+            i++
+            nums[i],nums[j]=nums[j],nums[i]
+        }
+    }
+    nums[i+1],nums[r]=nums[r],nums[i+1]
+    return i+1
+}
+
+func quickSort(nums []int,l int,r int){
+    if l>=r{
+        return
+    }
+    q:=partition(nums,l,r)
+    quickSort(nums,l,q-1)
+    quickSort(nums,q+1,r)
+}
+```
+
+### Bubble Sort
+
+O(n<sup>2</sup>)~O(n), stable
+
+```go
+func sortArray(nums []int) []int {
+    n:=len(nums)
+    for i:=0;i<n;i++{
+        for j:=0;j<n-i-1;j++{
+            if nums[j]>nums[j+1]{
+                nums[j],nums[j+1]=nums[j+1],nums[j]
+            }
+        }
+    }
+    return nums
+}
+```
+
+### HeapSort
+
+O(nlogn)~O(nlogn), unstable
+
+```go
+func heapify(nums []int, parent int,latestNode int){    //O(logn)
+    left:=2*parent+1
+    right:=2*parent+2
+    largest:=parent
+    if left<=latestNode&&nums[left]>nums[parent]{       //先检查节点是否存在
+        largest=left
+    }else{
+        largest=parent
+    }
+    if right<=latestNode&&nums[right]>nums[largest]{
+        largest=right
+    }
+    //如果父节点不变，下沉结束
+    
+    //存在大于父节点的子节点，交换
+    if largest!=parent{        //对交换过后的子节点进行下沉
+        nums[parent],nums[largest]=nums[largest],nums[parent]
+        heapify(nums,largest,latestNode)
+    }
+}
+
+func buildHeap(nums []int){
+    n:=len(nums)
+    for i:=(n-2)/2;i>=0;i--{   //从最后一个非叶节点开始下沉
+        heapify(nums,i,n-1)
+    }
+}
+
+func sortArray(nums []int) []int {
+    buildHeap(nums)
+    n:=len(nums)
+    for i:=n-1;i>=1;i--{
+        nums[0],nums[i]=nums[i],nums[0]
+        heapify(nums,0,i-1)
+    }
+    return nums
+}
+```
+
+### Insert Sort
+
+O(n)~O(n<sup>2</sup>), average O(n<sup>2</sup>), stable
+
+```go
+func sortArray(nums []int) []int {
+    n:=len(nums)
+    for i:=1;i<n;i++{
+        for j:=i;j>0;j--{
+            if nums[j]<nums[j-1]{
+                nums[j],nums[j-1]=nums[j-1],nums[j]
+            }
+        }
+    }
+    return nums
+}
+```
+
+### Merge Sort
+
+O(nlogn)~O(nlogn), stable
+
+```go
+
+func mergeSort(nums []int) []int {
+    if len(nums)<2{
+        return nums
+    }
+    mid:=len(nums)/2
+    left:=mergeSort(nums[:mid])
+    right:=mergeSort(nums[mid:])
+    result:=merge(left,right)
+    return result
+}
+
+func merge(left,right []int)[]int{
+    l,r:=0,0 //index
+    res:=[]int{}
+    for l<len(left){
+        if r==len(right){    //右数组遍历完，合并左剩余数组
+            res=append(res,left[l:]...)
+            break
+        }
+        if left[l]<right[r]{
+            res=append(res,left[l])
+            l++
+        }else{
+            res=append(res,right[r])
+            r++
+        }
+    }
+    res=append(res,right[r:]...)//左数组遍历完，合并剩余右数组
+    return res
+}
+```
+
+### Select Sort
+
+O(n<sup>2</sup>)~O(n<sup>2</sup>), average O(n<sup>2</sup>), unstable
+
+```go
+func sortArray(nums []int) []int {
+    n:=len(nums)
+    for i:=0;i<n;i++{
+        minIndex:=i
+        for j:=i+1;j<n;j++{
+            if nums[j]<nums[minIndex]{
+                minIndex=j
+            }
+        }
+        nums[i],nums[minIndex]=nums[minIndex],nums[i]
+    }
+    return nums
+}
+```
+
+
+
+
 
 
