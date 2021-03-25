@@ -1,6 +1,6 @@
 ---
 layout:     post   				    # 使用的布局（不需要改）
-title:      Self-use Algorithm and Data Structure Templates			# 标题 
+title:      Self-used Algorithm and Data Structure Templates			# 标题 
 subtitle:   Some self-used data structure and algorithm templates(keep updating) #副标题
 date:       2021-03-23 				# 时间
 author:     Leo 						# 作者
