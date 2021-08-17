@@ -4,7 +4,7 @@ title:      Network Notes(1)		# 标题
 subtitle:   二三层交换机基础； #副标题
 date:       2021-08-17		# 时间
 author:     Leo 						# 作者
-header-img: img/post-bg-hacker.png	#这篇文章标题背景图片
+header-img: img/post-bg-hacker.jpg	#这篇文章标题背景图片
 catalog: true 						# 是否归档
 tags:								#标签
     - Computer Network
