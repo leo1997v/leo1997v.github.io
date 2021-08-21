@@ -95,7 +95,7 @@ tag:当VLAN ID在允许通过VLAN ID列表内时，接受该报文；否则丢�
 
 当VLAN ID和缺省VLAN ID 不同且是该端口允许通过的VLAN ID，保持原有tag,发送该报文
 
-```mermaid
+<div class="mermaid">
 graph LR
 A[端口接受数据帧] --> B{帧是否带tag}
 	B --> |是| C{是否允许VLAN帧进入}
@@ -104,7 +104,7 @@ A[端口接受数据帧] --> B{帧是否带tag}
 	B --> |否| F[标记上缺省VLAN]
 	F --> D
 	D --> G[发送数据帧]
-```
+</div>
 
 #### Hybrid端口
 
