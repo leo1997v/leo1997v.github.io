@@ -124,7 +124,7 @@ tag:当VLAN ID在允许通过VLAN ID列表内时，接受该报文；否则丢�
 
 当报文中携带的VLAN ID是该端口允许通过的VLAN ID时，发送该报文，并可以通过`port hybrid vlan`命令配置端口在发送该VLAN（包括缺省VLAN）的报文时是否携带tag
 
-```mermaid
+<div class="mermaid">
 graph LR
 A[端口接受数据帧] --> B{帧是否带tag}
 	B --> |是| C{是否允许VLAN帧进入}
@@ -133,7 +133,7 @@ A[端口接受数据帧] --> B{帧是否带tag}
 	B --> |否| F[标记上缺省VLAN]
 	F --> D
 	D --> G[发送数据帧]
-```
+</div>
 
 ## VLAN的网络功能
 
@@ -173,7 +173,7 @@ A[端口接受数据帧] --> B{帧是否带tag}
 
 #### PC发送处理流程
 
-```mermaid
+<div class="mermaid">
 graph TD
 A(start) --> B{是否同一网段}
 	B --> |相同,二层转发|C{查ARP表项}
@@ -187,13 +187,11 @@ A(start) --> B{是否同一网段}
 			H --> SS[Success]
 		G --> |查不到|I[发送ARP广播报文 目的IP是下一跳IP]
 			I --> |收到ARP应答,得到下一跳MAC|H
-
-
-```
+</div>
 
 #### 接收端转发流程
 
-```mermaid
+<div class="mermaid">
 graph TD
 A(接收报文) --> B{比较报文目的MAC与三层口MAC}
 	B --> |不相等,二层转发|C{查询MAC表}
@@ -205,7 +203,7 @@ A(接收报文) --> B{比较报文目的MAC与三层口MAC}
 		F --> |网段路由| I[微码触发FIB_MISS]
 			I --> J[发送ARP给属于PC2所在VLAN的每一个端口]
 	
-```
+</div>
 
 
 
