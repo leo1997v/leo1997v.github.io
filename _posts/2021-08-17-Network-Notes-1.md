@@ -62,7 +62,7 @@ VLAN ID 就是缺省VLAN ID，去掉tag，发送报文
 
 <script src="/js/mermaid.min.js"></script>
 
-```mermaid
+<div class="mermaid">
 graph TD
 	A[端口接受数据帧] --> B{帧是否带tag}
 	B --> |是| C{帧的VLAN ID等于缺省VLAN}
@@ -71,7 +71,7 @@ graph TD
 	B --> |否| F[标记上缺省VLAN]
 	F --> D
 	D --> G[发送数据帧]
-```
+</div>
 
 
 

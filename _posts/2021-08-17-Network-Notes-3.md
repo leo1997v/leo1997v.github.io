@@ -13,7 +13,6 @@ tags:								#标签
 
 # ARP协议特性
 
-<script src="/js/mermaid.min.js"></script>
 
 ## 1 基本功能
 
@@ -116,7 +115,10 @@ A主机。A收到后将B的ARP信息写入自己的ARP缓存中。
 
 #### 4.1.1 收到ARP请求报文
 
-```mermaid
+
+<script src="/js/mermaid.min.js"></script>
+
+<div class="mermaid">
 graph TD
 A[收到ARP请求报文]-->B{检查报文字段}
 	B --> |不正确|C[丢弃]
@@ -127,12 +129,11 @@ D --> |同网段|F{请求是否本接口}
 F --> |不是本接口|H{存在该动态ARP}
 	H --> |否|C
 	H --> |是|I[更新动态ARP]
-
-```
+</div>
 
 #### 4.1.2 收到ARP应答报文
 
-```mermaid
+<div class="mermaid">
 graph TD
 A[收到ARP应答报文]-->B{检查报文字段}
 	B --> |不正确|C[丢弃]
@@ -141,7 +142,7 @@ B --> |正确|D{查找路由}
 D --> |同网段|F{目的IP是否本接口}
 	F --> |是本接口|G[更新动态ARP]
 F --> |不是本接口|C
-```
+</div>
 
 ### 4.2 ARP报文发送
 
