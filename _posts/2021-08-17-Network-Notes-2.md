@@ -13,6 +13,8 @@ tags:								#标签
 
 # TCP/IP
 
+<script src="/js/mermaid.min.js"></script>
+
 ## 1 TCP/IP体系结构
 
 OSI七层网络模型：物理层 链路层 网络层 传输层 会话层 表示层 应用层

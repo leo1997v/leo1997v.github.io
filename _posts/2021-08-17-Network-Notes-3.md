@@ -13,6 +13,8 @@ tags:								#标签
 
 # ARP协议特性
 
+<script src="/js/mermaid.min.js"></script>
+
 ## 1 基本功能
 
 Address Resolution Protocol：地址解析协议--->通过目标设备的IP地址，查询目标设备的MAC地址
