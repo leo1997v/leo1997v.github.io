@@ -59,6 +59,7 @@ tag：当VLAN ID与缺省VLAN ID 相同，接收报文，否则丢弃
 
 VLAN ID 就是缺省VLAN ID，去掉tag，发送报文
 
+
 ```mermaid
 graph TD
 A[端口接受数据帧] --> B{帧是否带tag}
@@ -69,6 +70,7 @@ A[端口接受数据帧] --> B{帧是否带tag}
 	F --> D
 	D --> G[发送数据帧]
 ```
+
 
 #### Trunk端口
 
