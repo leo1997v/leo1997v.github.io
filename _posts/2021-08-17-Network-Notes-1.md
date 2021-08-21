@@ -60,16 +60,19 @@ tag：当VLAN ID与缺省VLAN ID 相同，接收报文，否则丢弃
 VLAN ID 就是缺省VLAN ID，去掉tag，发送报文
 
 
-```mermaid
+<script src="/js/mermaid.min.js"></script>
+
+<div class="mermaid">
 graph TD
-A[端口接受数据帧] --> B{帧是否带tag}
+	A[端口接受数据帧] --> B{帧是否带tag}
 	B --> |是| C{帧的VLAN ID等于缺省VLAN}
 		C --> |是| D[根据MAC+VLAN ID查找VLAN配置信息]
 		C --> |否| E[丢弃数据帧]
 	B --> |否| F[标记上缺省VLAN]
 	F --> D
 	D --> G[发送数据帧]
-```
+</div>
+
 
 
 #### Trunk端口
